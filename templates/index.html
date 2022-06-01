@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Prédire un Nutriscore selon les informations nutritionnelles</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    </head>
+
+    <body>
+        <img src="https://user.oc-static.com/upload/2019/02/23/15509423491012_logo.png">
+        <br>
+        <form action="predicted" method="post">
+            <p>Veuillez entrer les informations nutritionnelles présentes sur l'étiquette de votre produit :</p>
+            <br>
+            <label for="energy">Energie (en kJ)</label>
+            <input type="number" id="energy" name="energy" step="0.01" placeholder="Energie (en kJ)" required>
+            <br>
+            <label for="fat">Matières Grasses</label>
+            <input type="number" id="fat" name="fat" step="0.01" placeholder="Matières Grasses" min="0" max="100" required>
+            <br>
+            <label for="saturated-fat">Acides gras saturés</label>
+            <input type="number" id="saturated-fat" name="saturated-fat" step="0.01" placeholder="Acides gras saturés" min="0" max="100" required>
+            <br>
+            <label for="carbohydrates">Glucides</label>
+            <input type="number" id="carbohydrates" name="carbohydrates" step="0.01" placeholder="Glucides" min="0" max="100" required>
+            <br>
+            <label for="sugars">Sucres</label>
+            <input type="number" id="sugars" name="sugars" step="0.01" placeholder="Sucres" min="0" max="100" required>
+            <br>
+            <label for="proteins">Protéines</label>
+            <input type="number" id="proteins" name="proteins" step="0.01" placeholder="Protéines" min="0" max="100" required>
+            <br>
+            <label for="salt">Sel</label>
+            <input type="number" id="salt" name="salt" step="0.01" placeholder="Sel" min="0" max="100" required>
+            <br>
+            <input type="submit" value="Prédire" id="predict">
+        </form>
+
+    <br>
+    <p>Le Nutriscore de votre produit est :</p>
+        {% for message in get_flashed_messages() %}
+            <img id="Nutriscore" src="/static/{{ message }}.png">
+        {% endfor %}
+    </body>
+</html>
