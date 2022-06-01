@@ -37,7 +37,7 @@
         </form>
 
     <br>
-    <p>Le Nutriscore de votre produit est :</p>
+    <p>Le Nutriscore de votre produit prédit par le modèle est :</p>
         {% for message in get_flashed_messages() %}
             <img id="Nutriscore" src="/static/{{ message }}.png">
         {% endfor %}
